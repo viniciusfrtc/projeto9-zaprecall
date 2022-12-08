@@ -1,20 +1,19 @@
 import styled from 'styled-components'
-import Pergunta from './components/Pergunta';
+import Deck from './components/Deck';
 import Footer from './components/Footer';
 import Logo from './components/Logo';
 import { useState } from 'react';
 
 export default function App() {
-  const [respostaRevelada, setRespostaRevelada] = useState([]);
+  const [answersCounter, setAnswersCounter] = useState(0);
+
+  const incrementAnswersCounter = () => setAnswersCounter(answersCounter + 1)
 
   return (
     <ScreenContainer>
       <Logo/>
-      <Pergunta 
-      key={respostaRevelada}
-      respostaRevelada = {respostaRevelada}
-      setRespostaRevelada = {setRespostaRevelada}/>
-      <Footer respostaRevelada={respostaRevelada}/>
+      <Deck incrementAnswersCounter={incrementAnswersCounter} />
+      <Footer answersCounter={answersCounter}/>
     </ScreenContainer>
   );
 }
